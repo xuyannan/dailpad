@@ -1,0 +1,169 @@
+// base, reset
+body, html, ul, li {
+  margin: 0;
+  padding: 0;
+  background: #DDD;
+  font-size: 14px;
+  font-family: "Arial";
+}
+
+a {
+  text-decoration: none;
+}
+
+// mixin
+@mixin gradient($direction, $from, $to) {
+  background: -webkit-linear-gradient($direction, $from, $to);
+  background: -moz-linear-gradient($direction, $from, $to);
+  background: -o-linear-gradient($direction, $from, $to);
+  background: linear-gradient($direction, $from, $to);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+}
+
+@mixin rounded($conner, $radius) {
+  @if $conner == 'all' {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+  } @else {
+    -webkit-border-#{$conner}-radius: $radius;
+    -moz-border-#{$conner}-radius: $radius;
+    -o-border-#{$conner}-radius: $radius;
+    border-#{$conner}-radius: $radius;
+  }
+}
+
+@mixin shadowed($x, $y, $width, $color) {
+  -webkit-box-shadow: $x $y $width $color;
+  -moz-box-shadow: $x $y $width $color;
+  -o-box-shadow: $x $y $width $color;
+  box-shadow: $x $y $width $color;
+}
+
+// variables
+$appwidth: 266px;
+$app-border-color: #aac1cf;
+
+
+// layout
+#wrapper {
+  width: $appwidth;
+  margin: 100px auto 0 auto;
+  color: #475b68;
+}
+
+// component
+.dailpad {
+  border: 1px solid #466784;
+  @include rounded('all', 4px);
+  background-color: #eef5f9;
+  @include shadowed(0, 0, 8px, #849bb1);
+
+}
+
+.dailpad__head {
+  text-align: center;
+  height: 28px;
+  line-height: 28px;
+  border-bottom: 1px solid $app-border-color;
+}
+.dailpad__head__close {
+  display: inline-block;
+  width:28px;
+  border-left: 1px solid $app-border-color;
+  float: right;
+  color: #7b8e99;
+}
+
+.dailpad__contact {
+  border-top: 1px solid #dceaf2;
+  border-bottom: 1px solid $app-border-color;
+  text-align: center;
+  @include gradient(top, #e7f0f6, #f8fcfd);
+}
+
+.dailpad__contact__input {
+  display: block;
+  width: 90%;
+  margin: 10px auto 0 auto;
+  background-color: #eef5f9;
+  border: 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #475b68;
+}
+.dailpad__contact__name {
+  margin: 0 10px 10px;
+  font-weight: bold;
+  color: #75838c;
+}
+
+.dailpad__keyboard {
+  background-color: #e2edf1;
+}
+.dailpad__keyboard__wrapper {
+  padding: 4px 10px 14px 10px;
+}
+
+.dailpad__keyboard ul {
+  list-style: none;
+  margin-top:10px;
+  background-color: inherit;
+}
+
+.dailpad__keyboard ul > li {
+  list-style: none;
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  width: 80px;
+  text-align: center;
+  border: 1px solid #a9c0ce;
+  @include gradient(top, #fff, #f0f6f9);
+  font-weight: bold;
+}
+
+.dailpad__keyboard ul > li:first-child {
+  @include rounded('top-left', 16px);
+  @include rounded('bottom-left', 16px);
+  border-right: 0;
+}
+.dailpad__keyboard ul > li:last-child {
+  @include rounded('top-right', 16px);
+  @include rounded('bottom-right', 16px);
+  border-left: 0;
+}
+
+.dailpad__keyboard ul > li.is-on {
+  @include gradient(top, #e8f1f6, #f8fcfd);
+}
+
+.dailpad__keyboard ul > li.star,
+.dailpad__keyboard ul > li.hash {
+  color: #8797a0;
+}
+
+.dailpad__call {
+  padding: 16px;
+  border-top: 1px solid $app-border-color;
+}
+.dailpad__call__button {
+  display: block;
+  width:100%;
+  text-align: center;
+  border: 1px solid #1b6399;
+  @include rounded('all', 2px);
+  height: 38px;
+  line-height: 38px;
+  background: -webkit-linear-gradient(top,#2780c3,#2070ad,#195e95,#206fac);
+  background: -moz-linear-gradient(top,#2780c3,#2070ad,#195e95,#206fac);
+  background: -o-linear-gradient(top,#2780c3,#2070ad,#195e95,#206fac);
+  background: linear-gradient(top,#2780c3,#2070ad,#195e95,#206fac);
+  font-weight: bold;
+  color: #FFF;
+}
+.dailpad__call__button:hover {
+  @include gradient(top, #2780c3, #206fac);
+}

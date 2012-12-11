@@ -1,0 +1,8 @@
+---
+name: css Dailpad
+description: A css version for a dailpad, the origin design is on dribble.com: http://dribbble.com/shots/851222-Dialpad-App
+authors:
+  - xuyannan
+resources:
+normalize_css: no
+...
